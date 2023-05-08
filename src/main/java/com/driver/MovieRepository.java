@@ -14,7 +14,7 @@ public class MovieRepository {
 
    private Map<String,Movie> movieMap;
    private Map<String,Director> directorMap;
-   private Map<String, List<String>> movieDirectorMap;
+   private Map<String, List<String>> movieDirectorMap; //director name--movieNamesList
 
 
     public MovieRepository(){
@@ -81,5 +81,20 @@ public class MovieRepository {
        }
     }
 
+    public void deleteAllDirectors() {
+        for (String s : movieDirectorMap.keySet()) {
+            List<String> list = new ArrayList<>();
+            list = movieDirectorMap.get(s);
+            for (String s1 : list) {
+                movieMap.remove(s1);
+            }
+        }
+        for (String s : movieDirectorMap.keySet()) {
+            movieDirectorMap.remove(s);
+        }
+        for (String s : directorMap.keySet()) {
+            directorMap.remove(s);
+        }
 
+    }
 }
